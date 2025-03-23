@@ -164,7 +164,7 @@ func initialize() error {
 func Use() *Config {
 	if config == nil {
 		if err := initialize(); err != nil {
-			log.Fatalf("failed to initialize configuration: %w", err)
+			log.Fatalf("failed to initialize configuration: %v", err)
 		}
 	}
 	return config
@@ -182,7 +182,7 @@ func SaveConfig() error {
 func WatchConfig(onChange func()) {
 	if v == nil {
 		if err := initialize(); err != nil {
-			panic(fmt.Errorf("failed to initialize configuration: %w", err))
+			log.Fatalf("failed to initialize configuration: %v", err)
 		}
 	}
 
